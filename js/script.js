@@ -106,7 +106,6 @@ recommendations[mood].forEach(book => {
   const bookDiv = document.createElement('div');
   bookDiv.classList.add('book-card');
   bookDiv.innerHTML = `
-    <img src="${book.cover}" alt="${book.title} cover" class="book-cover">
     <h3>${book.title}</h3>
     <p><strong>Author:</strong> ${book.author}</p>
     <p><strong>Genre:</strong> ${book.genre}</p>
@@ -114,6 +113,7 @@ recommendations[mood].forEach(book => {
   `;
   bookList.appendChild(bookDiv);
 });
+
 
   moodTitle.textContent = "Mood not found!";
 }
