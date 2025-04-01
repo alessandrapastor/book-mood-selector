@@ -41,10 +41,3 @@ nav a:hover {
 .book-card:hover {
   transform: scale(1.03);
 }
-
-.book-cover {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  margin-bottom: 12px;
-}
