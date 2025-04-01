@@ -1,4 +1,4 @@
-// === BOOK DATA ===
+document.addEventListener("DOMContentLoaded", () => {
 const recommendations = {
   adventurous: [
     {
@@ -82,37 +82,8 @@ const recommendations = {
   ]
 };
 
-// === DOM READY ===
-document.addEventListener("DOMContentLoaded", () => {
 
-  // === MOOD PAGE LOGIC ===
-  if (window.location.pathname.includes("mood.html")) {
-    const params = new URLSearchParams(window.location.search);
-    const mood = params.get("mood");
-
-    const moodTitle = document.getElementById("mood-title");
-    const bookList = document.getElementById("book-list");
-
-    if (mood && recommendations[mood]) {
-      moodTitle.textContent = `You're feeling ${mood}!`;
-
-      recommendations[mood].forEach(book => {
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("book-card");
-        bookDiv.innerHTML = `
-          <h3>${book.title}</h3>
-          <p><strong>Author:</strong> ${book.author}</p>
-          <p><strong>Genre:</strong> ${book.genre}</p>
-          <p>${book.description}</p>
-        `;
-        bookList.appendChild(bookDiv);
-      });
-    } else {
-      moodTitle.textContent = "Mood not found!";
-    }
-  }
-
-  // === SURPRISE ME PAGE LOGIC ===
+  // Only run on surprise.html
   if (window.location.pathname.includes("surprise.html")) {
     const allBooks = Object.values(recommendations).flat();
     const spinBtn = document.getElementById("spin-btn");
@@ -120,26 +91,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultDiv = document.getElementById("result");
 
     spinBtn.addEventListener("click", () => {
-      resultDiv.classList.add("hidden");
-      spinner.textContent = "Spinning...";
-      spinner.classList.add("spinning");
+      spinner.style.display = "block";
+      spinner.textContent = "Spinning... 🎲";
+      resultDiv.style.display = "none";
 
       setTimeout(() => {
         const book = allBooks[Math.floor(Math.random() * allBooks.length)];
 
-        spinner.classList.remove("spinning");
         spinner.textContent = "🎉 Here's your pick!";
-
         resultDiv.innerHTML = `
           <h3>${book.title}</h3>
           <p><strong>Author:</strong> ${book.author}</p>
           <p><strong>Genre:</strong> ${book.genre}</p>
           <p>${book.description}</p>
         `;
-        resultDiv.classList.remove("hidden");
+        resultDiv.style.display = "block";
       }, 1500);
     });
   }
-
 });
-
