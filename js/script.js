@@ -113,3 +113,7 @@ recommendations[mood].forEach(book => {
   `;
   bookList.appendChild(bookDiv);
 });
+
+
+  moodTitle.textContent = "Mood not found!";
+}
