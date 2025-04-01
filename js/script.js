@@ -102,11 +102,18 @@ const bookList = document.getElementById('book-list');
 if (mood && recommendations[mood]) {
   moodTitle.textContent = `You're feeling ${mood}!`;
 
-  recommendations[mood].forEach(book => {
-    const bookDiv = document.createElement('div');
-    bookDiv.innerHTML = `<h3>${book.title}</h3><p>by ${book.author}</p>`;
-    bookList.appendChild(bookDiv);
-  });
-} else {
+recommendations[mood].forEach(book => {
+  const bookDiv = document.createElement('div');
+  bookDiv.classList.add('book-card');
+  bookDiv.innerHTML = `
+    <img src="${book.cover}" alt="${book.title} cover" class="book-cover">
+    <h3>${book.title}</h3>
+    <p><strong>Author:</strong> ${book.author}</p>
+    <p><strong>Genre:</strong> ${book.genre}</p>
+    <p>${book.description}</p>
+  `;
+  bookList.appendChild(bookDiv);
+});
+
   moodTitle.textContent = "Mood not found!";
 }
