@@ -116,3 +116,18 @@ recommendations[mood].forEach(book => {
 } else {
   moodTitle.textContent = "Mood not found!";
 }
+
+// === SURPRISE ME PAGE LOGIC ===
+const surpriseDiv = document.getElementById("surprise-book");
+if (surpriseDiv) {
+  const allBooks = Object.values(recommendations).flat();
+  const randomBook = allBooks[Math.floor(Math.random() * allBooks.length)];
+
+  surpriseDiv.innerHTML = `
+    <h3>${randomBook.title}</h3>
+    <p><strong>Author:</strong> ${randomBook.author}</p>
+    <p><strong>Genre:</strong> ${randomBook.genre}</p>
+    <p>${randomBook.description}</p>
+  `;
+}
+
