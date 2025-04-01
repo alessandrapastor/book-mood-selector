@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Surprise Me!</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <div class="container">
     <h1>Here's a surprise pick for you!</h1>
-    <div id="surprise-book"></div>
+    <div id="surprise-book" class="book-card"></div>
     <button onclick="location.reload()">Shuffle Again!</button>
     <button onclick="location.href='index.html'">← Back Home</button>
   </div>
 
-  <script>
-    const allBooks = Object.values({
-      adventurous: ["Into the Wild", "The Hobbit"],
-      nostalgic: ["The Great Gatsby", "Little Women"],
-      romantic: ["Pride and Prejudice", "The Notebook"],
-      eerie: ["Dracula", "Coraline"]
-    }).flat();
-
-    const randomBook = allBooks[Math.floor(Math.random() * allBooks.length)];
-    document.getElementById('surprise-book').innerHTML = `<h2>${randomBook}</h2>`;
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
