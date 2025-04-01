@@ -83,7 +83,6 @@ const recommendations = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-
   // === MOOD PAGE LOGIC ===
   if (window.location.pathname.includes("mood.html")) {
     const params = new URLSearchParams(window.location.search);
@@ -117,13 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const randomBook = allBooks[Math.floor(Math.random() * allBooks.length)];
 
     const surpriseDiv = document.getElementById("surprise-book");
-    surpriseDiv.innerHTML = `
-      <h3>${randomBook.title}</h3>
-      <p><strong>Author:</strong> ${randomBook.author}</p>
-      <p><strong>Genre:</strong> ${randomBook.genre}</p>
-      <p>${randomBook.description}</p>
-    `;
+
+    if (surpriseDiv && randomBook) {
+      surpriseDiv.innerHTML = `
+        <h3>${randomBook.title}</h3>
+        <p><strong>Author:</strong> ${randomBook.author}</p>
+        <p><strong>Genre:</strong> ${randomBook.genre}</p>
+        <p>${randomBook.description}</p>
+      `;
+    } else {
+      console.error("Element or book not found.");
+    }
   }
-
 });
-
