@@ -1,25 +1,23 @@
+// === BOOK DATA ===
 const recommendations = {
   adventurous: [
     {
       title: "The Hobbit",
       author: "J.R.R. Tolkien",
       genre: "Fantasy",
-      description: "A hobbit's unexpected journey across Middle Earth.",
-      cover: "https://covers.openlibrary.org/b/id/6979861-L.jpg"
+      description: "A hobbit's unexpected journey across Middle Earth."
     },
     {
       title: "Into the Wild",
       author: "Jon Krakauer",
       genre: "Biography/Adventure",
-      description: "The true story of a young man's journey into the Alaskan wilderness.",
-      cover: "https://covers.openlibrary.org/b/id/8225266-L.jpg"
+      description: "The true story of a young man's journey into the Alaskan wilderness."
     },
     {
       title: "Life of Pi",
       author: "Yann Martel",
       genre: "Adventure/Fiction",
-      description: "A boy stranded on a lifeboat with a Bengal tiger.",
-      cover: "https://covers.openlibrary.org/b/id/8281992-L.jpg"
+      description: "A boy stranded on a lifeboat with a Bengal tiger."
     }
   ],
   nostalgic: [
@@ -27,22 +25,19 @@ const recommendations = {
       title: "Little Women",
       author: "Louisa May Alcott",
       genre: "Classic",
-      description: "The lives and dreams of four sisters growing up during the Civil War.",
-      cover: "https://covers.openlibrary.org/b/id/10523300-L.jpg"
+      description: "The lives and dreams of four sisters growing up during the Civil War."
     },
     {
       title: "Anne of Green Gables",
       author: "L.M. Montgomery",
       genre: "Classic/Coming-of-age",
-      description: "An imaginative girl transforms life in a small town.",
-      cover: "https://covers.openlibrary.org/b/id/10958395-L.jpg"
+      description: "An imaginative girl transforms life in a small town."
     },
     {
       title: "The Catcher in the Rye",
       author: "J.D. Salinger",
       genre: "Classic/Teen Fiction",
-      description: "A teen's angsty reflections on growing up in New York.",
-      cover: "https://covers.openlibrary.org/b/id/8226191-L.jpg"
+      description: "A teen's angsty reflections on growing up in New York."
     }
   ],
   romantic: [
@@ -50,22 +45,19 @@ const recommendations = {
       title: "Pride and Prejudice",
       author: "Jane Austen",
       genre: "Classic Romance",
-      description: "The witty and passionate love story of Elizabeth Bennet and Mr. Darcy.",
-      cover: "https://covers.openlibrary.org/b/id/8319254-L.jpg"
+      description: "The witty and passionate love story of Elizabeth Bennet and Mr. Darcy."
     },
     {
       title: "The Notebook",
       author: "Nicholas Sparks",
       genre: "Romance",
-      description: "A lifelong love story that endures through memory and time.",
-      cover: "https://covers.openlibrary.org/b/id/7984916-L.jpg"
+      description: "A lifelong love story that endures through memory and time."
     },
     {
       title: "Me Before You",
       author: "Jojo Moyes",
       genre: "Contemporary Romance",
-      description: "A heart-wrenching romance between opposites.",
-      cover: "https://covers.openlibrary.org/b/id/8231995-L.jpg"
+      description: "A heart-wrenching romance between opposites."
     }
   ],
   eerie: [
@@ -73,75 +65,81 @@ const recommendations = {
       title: "Dracula",
       author: "Bram Stoker",
       genre: "Gothic Horror",
-      description: "A chilling classic that introduced the vampire to literature.",
-      cover: "https://covers.openlibrary.org/b/id/8231997-L.jpg"
+      description: "A chilling classic that introduced the vampire to literature."
     },
     {
       title: "Coraline",
       author: "Neil Gaiman",
       genre: "Fantasy/Horror",
-      description: "A girl enters a dark alternate world with a creepy twist.",
-      cover: "https://covers.openlibrary.org/b/id/8091016-L.jpg"
+      description: "A girl enters a dark alternate world with a creepy twist."
     },
     {
       title: "Mexican Gothic",
       author: "Silvia Moreno-Garcia",
       genre: "Gothic Fiction",
-      description: "A glamorous socialite investigates a haunted house in 1950s Mexico.",
-      cover: "https://covers.openlibrary.org/b/id/10762952-L.jpg"
+      description: "A glamorous socialite investigates a haunted house in 1950s Mexico."
     }
   ]
 };
 
-// Get mood from URL
-const params = new URLSearchParams(window.location.search);
-const mood = params.get('mood');
-const moodTitle = document.getElementById('mood-title');
-const bookList = document.getElementById('book-list');
+// === DOM READY ===
+document.addEventListener("DOMContentLoaded", () => {
 
-if (mood && recommendations[mood]) {
-  moodTitle.textContent = `You're feeling ${mood}!`;
+  // === MOOD PAGE LOGIC ===
+  if (window.location.pathname.includes("mood.html")) {
+    const params = new URLSearchParams(window.location.search);
+    const mood = params.get("mood");
 
-recommendations[mood].forEach(book => {
-  const bookDiv = document.createElement('div');
-  bookDiv.classList.add('book-card');
-  bookDiv.innerHTML = `
-    <h3>${book.title}</h3>
-    <p><strong>Author:</strong> ${book.author}</p>
-    <p><strong>Genre:</strong> ${book.genre}</p>
-    <p>${book.description}</p>
-  `;
-  bookList.appendChild(bookDiv);
+    const moodTitle = document.getElementById("mood-title");
+    const bookList = document.getElementById("book-list");
+
+    if (mood && recommendations[mood]) {
+      moodTitle.textContent = `You're feeling ${mood}!`;
+
+      recommendations[mood].forEach(book => {
+        const bookDiv = document.createElement("div");
+        bookDiv.classList.add("book-card");
+        bookDiv.innerHTML = `
+          <h3>${book.title}</h3>
+          <p><strong>Author:</strong> ${book.author}</p>
+          <p><strong>Genre:</strong> ${book.genre}</p>
+          <p>${book.description}</p>
+        `;
+        bookList.appendChild(bookDiv);
+      });
+    } else {
+      moodTitle.textContent = "Mood not found!";
+    }
+  }
+
+  // === SURPRISE ME PAGE LOGIC ===
+  if (window.location.pathname.includes("surprise.html")) {
+    const allBooks = Object.values(recommendations).flat();
+    const spinBtn = document.getElementById("spin-btn");
+    const spinner = document.getElementById("spinner");
+    const resultDiv = document.getElementById("result");
+
+    spinBtn.addEventListener("click", () => {
+      resultDiv.classList.add("hidden");
+      spinner.textContent = "Spinning...";
+      spinner.classList.add("spinning");
+
+      setTimeout(() => {
+        const book = allBooks[Math.floor(Math.random() * allBooks.length)];
+
+        spinner.classList.remove("spinning");
+        spinner.textContent = "🎉 Here's your pick!";
+
+        resultDiv.innerHTML = `
+          <h3>${book.title}</h3>
+          <p><strong>Author:</strong> ${book.author}</p>
+          <p><strong>Genre:</strong> ${book.genre}</p>
+          <p>${book.description}</p>
+        `;
+        resultDiv.classList.remove("hidden");
+      }, 1500);
+    });
+  }
+
 });
 
-} else {
-  moodTitle.textContent = "Mood not found!";
-}
-if (window.location.pathname.includes("surprise.html")) {
-  const allBooks = Object.values(recommendations).flat();
-  const spinBtn = document.getElementById("spin-btn");
-  const spinner = document.getElementById("spinner");
-  const resultDiv = document.getElementById("result");
-
-  spinBtn.addEventListener("click", () => {
-    resultDiv.classList.add("hidden");
-    spinner.textContent = "Spinning...";
-    spinner.classList.add("spinning");
-
-    // Simulate delay like a real spinner
-    setTimeout(() => {
-      const book = allBooks[Math.floor(Math.random() * allBooks.length)];
-
-      spinner.classList.remove("spinning");
-      spinner.textContent = "🎉 Here's your pick!";
-
-      resultDiv.innerHTML = `
-        <h3>${book.title}</h3>
-        <p><strong>Author:</strong> ${book.author}</p>
-        <p><strong>Genre:</strong> ${book.genre}</p>
-        <p>${book.description}</p>
-      `;
-      resultDiv.classList.remove("hidden");
-    }, 1500);
-  });
-}
