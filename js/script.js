@@ -117,3 +117,31 @@ recommendations[mood].forEach(book => {
 } else {
   moodTitle.textContent = "Mood not found!";
 }
+if (window.location.pathname.includes("surprise.html")) {
+  const allBooks = Object.values(recommendations).flat();
+  const spinBtn = document.getElementById("spin-btn");
+  const spinner = document.getElementById("spinner");
+  const resultDiv = document.getElementById("result");
+
+  spinBtn.addEventListener("click", () => {
+    resultDiv.classList.add("hidden");
+    spinner.textContent = "Spinning...";
+    spinner.classList.add("spinning");
+
+    // Simulate delay like a real spinner
+    setTimeout(() => {
+      const book = allBooks[Math.floor(Math.random() * allBooks.length)];
+
+      spinner.classList.remove("spinning");
+      spinner.textContent = "🎉 Here's your pick!";
+
+      resultDiv.innerHTML = `
+        <h3>${book.title}</h3>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Genre:</strong> ${book.genre}</p>
+        <p>${book.description}</p>
+      `;
+      resultDiv.classList.remove("hidden");
+    }, 1500);
+  });
+}
