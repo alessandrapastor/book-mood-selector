@@ -41,3 +41,24 @@ nav a:hover {
 .book-card:hover {
   transform: scale(1.03);
 }
+#spinner {
+  margin: 30px auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #6c5ce7;
+  animation: none;
+}
+
+@keyframes spinText {
+  0% { transform: rotate(0deg); opacity: 0.2; }
+  50% { transform: rotate(360deg); opacity: 1; }
+  100% { transform: rotate(0deg); opacity: 0.2; }
+}
+
+.spinning {
+  animation: spinText 1.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
