@@ -80,36 +80,38 @@ const recommendations = {
     }
   ]
 };
-
 document.addEventListener("DOMContentLoaded", () => {
   const moodTitle = document.getElementById("mood-title");
   const bookList = document.getElementById("book-list");
   const surpriseDiv = document.getElementById("surprise-book");
 
+  // 🧠 FIXED: Define mood from URL
+  const params = new URLSearchParams(window.location.search);
+  const mood = params.get("mood");
+
   // Mood page logic
-if (mood && recommendations[mood]) {
-  // Mood-based styling
-  document.body.classList.add(`theme-${mood}`);
+  if (moodTitle && bookList && mood && recommendations[mood]) {
+    document.body.classList.add(`theme-${mood}`);
 
-  moodTitle.textContent = {
-    adventurous: "🌍 You're feeling adventurous!",
-    nostalgic: "📖 You're feeling nostalgic!",
-    romantic: "💘 You're feeling romantic!",
-    eerie: "👻 You're feeling eerie!"
-  }[mood] || `You're feeling ${mood}!`;
+    moodTitle.textContent = {
+      adventurous: "🌍 You're feeling adventurous!",
+      nostalgic: "📖 You're feeling nostalgic!",
+      romantic: "💘 You're feeling romantic!",
+      eerie: "👻 You're feeling eerie!"
+    }[mood] || `You're feeling ${mood}!`;
 
-  recommendations[mood].forEach(book => {
-    const bookDiv = document.createElement("div");
-    bookDiv.classList.add("book-card");
-    bookDiv.innerHTML = `
-      <h3>${book.title}</h3>
-      <p><strong>Author:</strong> ${book.author}</p>
-      <p><strong>Genre:</strong> ${book.genre}</p>
-      <p>${book.description}</p>
-    `;
-    bookList.appendChild(bookDiv);
-  });
-}
+    recommendations[mood].forEach(book => {
+      const bookDiv = document.createElement("div");
+      bookDiv.classList.add("book-card");
+      bookDiv.innerHTML = `
+        <h3>${book.title}</h3>
+        <p><strong>Author:</strong> ${book.author}</p>
+        <p><strong>Genre:</strong> ${book.genre}</p>
+        <p>${book.description}</p>
+      `;
+      bookList.appendChild(bookDiv);
+    });
+  }
 
   // Surprise page logic
   if (surpriseDiv) {
@@ -124,4 +126,5 @@ if (mood && recommendations[mood]) {
     `;
   }
 });
+
 
