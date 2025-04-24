@@ -1,3 +1,4 @@
+/* styles.css */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fdfdfd;
@@ -7,6 +8,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .container {
@@ -28,19 +30,23 @@ nav a:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(108, 92, 231, 0.4);
 }
+
 .book-card {
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 16px;
   margin: 20px auto;
-  max-width: 300px;
+  max-width: 320px;
   background-color: #fff;
+  color: #333;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
+
 .book-card:hover {
   transform: scale(1.03);
 }
+
 #spinner {
   margin: 30px auto;
   font-size: 1.5rem;
@@ -62,32 +68,33 @@ nav a:hover {
 .hidden {
   display: none;
 }
+
+/* Improved Mood Themes */
 .theme-adventurous {
-  background: linear-gradient(135deg, #2ecc71, #3498db);
-  color: #3b2f2f;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: #ffffff;
 }
 
 .theme-nostalgic {
-  background: linear-gradient(135deg, #f7e6a2, #d3b8ae);
-  color: #3b2f2f;
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  color: #4a2f1f;
 }
 
 .theme-romantic {
-  background: linear-gradient(135deg, #f78fb3, #f8a5c2);
+  background: linear-gradient(135deg, #ff9a9e, #fecfef);
   color: #3b2f2f;
 }
 
 .theme-eerie {
-  background: linear-gradient(135deg, #2c3e50, #000);
-  color: #3b2f2f;
+  background: linear-gradient(135deg, #1f1f1f, #000);
+  color: #f1f1f1;
 }
 
 .theme-adventurous .book-card,
 .theme-nostalgic .book-card,
 .theme-romantic .book-card,
 .theme-eerie .book-card {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.95);
   color: inherit;
 }
-
 
