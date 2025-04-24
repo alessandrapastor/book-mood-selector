@@ -87,28 +87,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const surpriseDiv = document.getElementById("surprise-book");
 
   // Mood page logic
-  if (moodTitle && bookList) {
-    const params = new URLSearchParams(window.location.search);
-    const mood = params.get("mood");
+if (mood && recommendations[mood]) {
+  // Mood-based styling
+  document.body.classList.add(`theme-${mood}`);
 
-    if (mood && recommendations[mood]) {
-      moodTitle.textContent = `You're feeling ${mood}!`;
+  moodTitle.textContent = {
+    adventurous: "🌍 You're feeling adventurous!",
+    nostalgic: "📖 You're feeling nostalgic!",
+    romantic: "💘 You're feeling romantic!",
+    eerie: "👻 You're feeling eerie!"
+  }[mood] || `You're feeling ${mood}!`;
 
-      recommendations[mood].forEach(book => {
-        const bookDiv = document.createElement("div");
-        bookDiv.classList.add("book-card");
-        bookDiv.innerHTML = `
-          <h3>${book.title}</h3>
-          <p><strong>Author:</strong> ${book.author}</p>
-          <p><strong>Genre:</strong> ${book.genre}</p>
-          <p>${book.description}</p>
-        `;
-        bookList.appendChild(bookDiv);
-      });
-    } else {
-      moodTitle.textContent = "Mood not found!";
-    }
-  }
+  recommendations[mood].forEach(book => {
+    const bookDiv = document.createElement("div");
+    bookDiv.classList.add("book-card");
+    bookDiv.innerHTML = `
+      <h3>${book.title}</h3>
+      <p><strong>Author:</strong> ${book.author}</p>
+      <p><strong>Genre:</strong> ${book.genre}</p>
+      <p>${book.description}</p>
+    `;
+    bookList.appendChild(bookDiv);
+  });
+}
 
   // Surprise page logic
   if (surpriseDiv) {
