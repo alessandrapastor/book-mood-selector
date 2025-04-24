@@ -64,7 +64,7 @@ nav a:hover {
 }
 .theme-adventurous {
   background: linear-gradient(135deg, #2ecc71, #3498db);
-  color: #fff;
+  color: #3b2f2f;
 }
 
 .theme-nostalgic {
@@ -74,12 +74,12 @@ nav a:hover {
 
 .theme-romantic {
   background: linear-gradient(135deg, #f78fb3, #f8a5c2);
-  color: #fff;
+  color: #3b2f2f;
 }
 
 .theme-eerie {
   background: linear-gradient(135deg, #2c3e50, #000);
-  color: #ecf0f1;
+  color: #3b2f2f;
 }
 
 .theme-adventurous .book-card,
@@ -89,4 +89,5 @@ nav a:hover {
   background-color: rgba(255, 255, 255, 0.9);
   color: inherit;
 }
+
 
