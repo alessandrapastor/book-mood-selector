@@ -62,3 +62,31 @@ nav a:hover {
 .hidden {
   display: none;
 }
+.theme-adventurous {
+  background: linear-gradient(135deg, #2ecc71, #3498db);
+  color: #fff;
+}
+
+.theme-nostalgic {
+  background: linear-gradient(135deg, #f7e6a2, #d3b8ae);
+  color: #3b2f2f;
+}
+
+.theme-romantic {
+  background: linear-gradient(135deg, #f78fb3, #f8a5c2);
+  color: #fff;
+}
+
+.theme-eerie {
+  background: linear-gradient(135deg, #2c3e50, #000);
+  color: #ecf0f1;
+}
+
+.theme-adventurous .book-card,
+.theme-nostalgic .book-card,
+.theme-romantic .book-card,
+.theme-eerie .book-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: inherit;
+}
+
