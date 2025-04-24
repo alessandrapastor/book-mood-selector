@@ -72,12 +72,12 @@ nav a:hover {
 /* Improved Mood Themes */
 .theme-adventurous {
   background: linear-gradient(135deg, #2ecc71, #27ae60);
-  color: #ffffff;
+  color: #3b2f2f;
 }
 
 .theme-nostalgic {
   background: linear-gradient(135deg, #ffecd2, #fcb69f);
-  color: #4a2f1f;
+  color: #3b2f2f;
 }
 
 .theme-romantic {
@@ -87,7 +87,7 @@ nav a:hover {
 
 .theme-eerie {
   background: linear-gradient(135deg, #1f1f1f, #000);
-  color: #f1f1f1;
+  color: #3b2f2f;
 }
 
 .theme-adventurous .book-card,
