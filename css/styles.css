@@ -13,6 +13,8 @@ body {
 
 .container {
   text-align: center;
+  padding: 20px;
+  max-width: 600px;
 }
 
 nav a {
@@ -32,6 +34,8 @@ nav a:hover {
 }
 
 .book-card {
+  font-size: 1rem;
+  line-height: 1.6;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 16px;
