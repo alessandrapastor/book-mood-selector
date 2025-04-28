@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find Your Mood</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .quiz-question {
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .quiz-question p {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .quiz-question label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+
+    #progress {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #6c5ce7;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="fade-in">🧠 Let’s find your book mood!</h1>
+    <form id="quiz-form">
+      <div id="question-container"></div>
+      <button type="submit" id="submit-btn" style="margin-top: 20px; padding: 10px 20px;">🎯 Reveal My Mood</button>
+    </form>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        text: "1. Where would you spend a weekend?",
+        options: [
+          { label: "🏞️ Hiking in the mountains", mood: "adventurous" },
+          { label: "🛋️ Curled up with tea at home", mood: "nostalgic" },
+          { label: "🌹 In a Paris cafe with someone special", mood: "romantic" },
+          { label: "🏚️ Exploring an abandoned building", mood: "eerie" }
+        ]
+      },
+      {
+        text: "2. Pick a movie vibe:",
+        options: [
+          { label: "🧗 Survival + thrill", mood: "adventurous" },
+          { label: "🎬 90s childhood film", mood: "nostalgic" },
+          { label: "🎥 Slow-burn love story", mood: "romantic" },
+          { label: "😱 Psychological mystery", mood: "eerie" }
+        ]
+      },
+      {
+        text: "3. Favorite type of weather?",
+        options: [
+          { label: "🌤️ Sunny with a breeze", mood: "adventurous" },
+          { label: "🌧️ Drizzly and cozy", mood: "nostalgic" },
+          { label: "🌅 Sunset skies", mood: "romantic" },
+          { label: "🌫️ Foggy and cold", mood: "eerie" }
+        ]
+      },
+      {
+        text: "4. Choose a word:",
+        options: [
+          { label: "🧭 Quest", mood: "adventurous" },
+          { label: "📸 Memory", mood: "nostalgic" },
+          { label: "💖 Heart", mood: "romantic" },
+          { label: "🔍 Secrets", mood: "eerie" }
+        ]
+      },
+      {
+        text: "5. Pick a book setting:",
+        options: [
+          { label: "🌳Jungle expedition", mood: "adventurous" },
+          { label: "🏘️Small-town New England", mood: "nostalgic" },
+          { label: "🍝Italian villa", mood: "romantic" },
+          { label: "🏚️Haunted mansion", mood: "eerie" }
+        ]
+      },
+      {
+        text: "6. Ideal soundtrack:",
+        options: [
+          { label: "🥁 Tribal drums", mood: "adventurous" },
+          { label: "🎻 Classical piano", mood: "nostalgic" },
+          { label: "🎷 Smooth jazz", mood: "romantic" },
+          { label: "🧟 Ambient horror", mood: "eerie" }
+        ]
+      },
+      {
+        text: "7. What's your vibe today?",
+        options: [
+          { label: "😎 Bold", mood: "adventurous" },
+          { label: "😌 Sentimental", mood: "nostalgic" },
+          { label: "😍 Lovey", mood: "romantic" },
+          { label: "😶 Curious", mood: "eerie" }
+        ]
+      },
+      {
+        text: "8. Pick an animal guide:",
+        options: [
+          { label: "🦅 Eagle", mood: "adventurous" },
+          { label: "🐢 Tortoise", mood: "nostalgic" },
+          { label: "🦢 Swan", mood: "romantic" },
+          { label: "🦉 Owl", mood: "eerie" }
+        ]
+      }
+    ];
+
+    const container = document.getElementById("question-container");
+    const progressText = document.getElementById("progress");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.className = "quiz-question";
+      div.innerHTML = `<p>${q.text}</p>` + q.options.map((opt, i) => 
+        `<label><input type="radio" name="q${index}" value="${opt.mood}" required> ${opt.label}</label>`
+      ).join("");
+      container.appendChild(div);
+    });
+
+    document.getElementById("quiz-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const data = new FormData(this);
+      const score = { adventurous: 0, nostalgic: 0, romantic: 0, eerie: 0 };
+      for (let value of data.values()) {
+        score[value]++;
+      }
+      const mood = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0];
+      window.location.href = `mood.html?mood=${mood}`;
+    });
+  </script>
+</body>
+</html>
