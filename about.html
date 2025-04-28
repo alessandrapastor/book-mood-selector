@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - Book Mood Selector</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<script>
+  document.getElementById('feedback-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('feedback-form').style.display = 'none';
+    document.getElementById('feedback-thankyou').style.display = 'block';
+  });
+</script>
+
+<body>
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">📚 Book Mood Selector</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Mood Quiz</a>
+        <a href="forum.html">Forum</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container about-section">
+    <h2>About This Project</h2>
+    <p><strong>Book Mood Selector</strong> is a fun, interactive web app that recommends books based on how you're feeling. Whether you're feeling adventurous, nostalgic, romantic, or a little eerie — there's always a perfect book match waiting for you.</p>
+    
+    <h3>👩‍💻 Built By</h3>
+    <p>Created with care by Alessandra Pastor, a passionate student-athlete with a love for literature, tech, and track. This project was built using HTML, CSS, and JavaScript — and designed to be lightweight, responsive, and fun!</p>
+  
+    <h3>💡 How It Works</h3>
+    <p>The app uses JavaScript to read your selected mood (or quiz answers), then dynamically displays a list of curated book recommendations based on that mood.</p>
+  
+    <h3>🌱 What's Next?</h3>
+    <p>We’re building a community! Soon, users will be able to share their mood and discover books through a public forum. Stay tuned!</p>
+  
+    <h3>🧰 Tech Stack</h3>
+    <ul>
+      <li>HTML5, CSS3, JavaScript</li>
+      <li>LocalStorage for forum features</li>
+      <li>Google Fonts, Emoji UX</li>
+    </ul>
+
+    <section class="about-contact fade-in">
+      <h3>📬 Contact Me</h3>
+      <p>If you have questions, suggestions, or just want to say hi, feel free to reach out!</p>
+      <ul style="list-style: none; padding: 0;">
+        <li><strong>Email:</strong> alessandra.pastor@my.liu.edu</li>
+        <li><strong>Instagram:</strong> @bookmoodselector</li>
+        <li><strong>Phone:</strong> (123) 456-7890</li>
+      </ul>
+    </section>
+    
+    <section class="about-feedback fade-in" style="margin-top: 40px;">
+      <h3>⭐ Leave Feedback</h3>
+      <p>We'd love to hear how you're enjoying the Book Mood Selector!</p>
+      <form id="feedback-form" style="margin-top: 20px;">
+        <input type="text" placeholder="Your Name" required style="width: 80%; padding: 10px; margin-bottom: 10px;"><br>
+        <textarea placeholder="Your Feedback" required rows="4" style="width: 80%; padding: 10px;"></textarea><br>
+        <button type="submit" style="margin-top: 10px; padding: 10px 20px;">Submit Feedback</button>
+      </form>
+      <div id="feedback-thankyou" style="margin-top: 20px; display: none; color: #6c5ce7; font-weight: bold;">Thank you for your feedback! 💬</div>
+    </section>
+    
+  </main>  
+
+  <footer>
+    <p>© 2025 Book Mood Selector</p>
+  </footer>
+</body>
+</html>
 
