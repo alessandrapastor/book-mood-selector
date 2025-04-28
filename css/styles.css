@@ -1,13 +1,11 @@
-/* styles.css */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fdfdfd;
   color: #333;
   transition: background-color 0.5s ease;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
 }
 
@@ -15,6 +13,7 @@ body {
   text-align: center;
   padding: 20px;
   max-width: 600px;
+  margin: 0 auto;
 }
 
 nav a {
@@ -34,15 +33,12 @@ nav a:hover {
 }
 
 .book-card {
-  font-size: 1rem;
-  line-height: 1.6;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 16px;
   margin: 20px auto;
-  max-width: 320px;
+  max-width: 300px;
   background-color: #fff;
-  color: #333;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   transition: transform 0.3s;
 }
@@ -90,7 +86,7 @@ nav a:hover {
 }
 
 .theme-eerie {
-  background: linear-gradient(135deg, #1f1f1f, #000);
+  background: linear-gradient(135deg, #ffffff, #392c2c);
   color: #3b2f2f;
 }
 
@@ -98,7 +94,228 @@ nav a:hover {
 .theme-nostalgic .book-card,
 .theme-romantic .book-card,
 .theme-eerie .book-card {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.9);
   color: inherit;
+}
+
+/* Quiz */
+.quiz-question {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.quiz-question label {
+  display: block;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.start-quiz-button {
+  display: inline-block;
+  padding: 15px 25px;
+  background-color: #6c5ce7;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  font-size: 1.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.start-quiz-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(108, 92, 231, 0.3);
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  background-color: #6c5ce7;
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+/* FOOTER */
+footer {
+  background-color: #f2f2f2;
+  color: #333;
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* Mood section layout */
+.mood-nav {
+  margin-top: 30px;
+}
+
+.mood-nav a {
+  margin: 10px;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #6c5ce7;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: inline-block;
+}
+
+.mood-nav a:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(108, 92, 231, 0.4);
+}
+
+/* Forum teaser */
+.forum-teaser {
+  background: #f9f9ff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+/* ABOUT PAGE STYLES */
+.about-section {
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  margin: 40px auto;
+  padding: 30px 40px;
+  max-width: 800px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-section h3 {
+  font-size: 1.3rem;
+  color: #6c5ce7;
+  margin-top: 30px;
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.about-section ul li {
+  padding: 5px 0;
+  font-weight: 500;
+}
+
+/* Unify all nav and mood buttons */
+.mood-nav a,
+.start-quiz-button {
+  font-size: 1rem; /* 👈 make all font sizes match */
+}
+
+/* Bump up nav font size in header for readability */
+header nav a {
+  font-size: 1.05rem;
+}
+
+/* Smooth fade/slide animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.book-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Optional: Delay animations for mood buttons */
+.mood-nav a {
+  animation: fadeInUp 0.6s ease-out;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+/* Surprise Page Styling */
+.surprise-container {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.surprise-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.surprise-book {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.surprise-book:hover {
+  transform: scale(1.03);
+}
+
+.surprise-buttons {
+  margin-top: 30px;
+}
+
+.surprise-buttons button {
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.surprise-buttons button:hover {
+  background-color: #5a4cc7;
+  transform: translateY(-2px);
 }
 
