@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy a Book - Book Mood Selector</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .shop-container { text-align: center; margin-top: 60px; }
+    .shop-section { margin-bottom: 50px; }
+    .shop-section h2 { color: #6c5ce7; margin-bottom: 30px; }
+    .book-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .book-card img { width: 100%; border-radius: 8px; }
+    .buy-button { display: inline-block; margin-top: 10px; padding: 10px 20px; background-color: #6c5ce7; color: white; text-decoration: none; border-radius: 8px; transition: background-color 0.3s, transform 0.3s; }
+    .buy-button:hover { background-color: #5a4cc7; transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">📚 Book Mood Selector</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Mood Quiz</a>
+        <a href="forum.html">Forum</a>
+        <a href="about.html">About</a>
+        <a href="shop.html">Shop</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container shop-container">
+    <h1>🛒 Buy a Book</h1>
+
+    <section class="shop-section">
+      <h2>🌍 Adventurous Reads</h2>
+      <div class="book-grid">
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg" alt="The Hobbit">
+          <h3>The Hobbit</h3>
+          <p><strong>Author:</strong> J.R.R. Tolkien</p>
+          <a href="https://www.amazon.com/Hobbit-J-R-R-Tolkien/dp/054792822X" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9780385486804-L.jpg" alt="Into the Wild">
+          <h3>Into the Wild</h3>
+          <p><strong>Author:</strong> Jon Krakauer</p>
+          <a href="https://www.amazon.com/Into-Wild-Jon-Krakauer/dp/0385486804" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-section">
+      <h2>📖 Nostalgic Reads</h2>
+      <div class="book-grid">
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9780147514011-L.jpg" alt="Little Women">
+          <h3>Little Women</h3>
+          <p><strong>Author:</strong> Louisa May Alcott</p>
+          <a href="https://www.amazon.com/Little-Women-Penguin-Classics-Alcott/dp/0147514010" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9780140367416-L.jpg" alt="Anne of Green Gables">
+          <h3>Anne of Green Gables</h3>
+          <p><strong>Author:</strong> L.M. Montgomery</p>
+          <a href="https://www.amazon.com/Anne-Green-Gables-Puffin-Classics/dp/014036741X" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-section">
+      <h2>💘 Romantic Reads</h2>
+      <div class="book-grid">
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9781503290563-L.jpg" alt="Pride and Prejudice">
+          <h3>Pride and Prejudice</h3>
+          <p><strong>Author:</strong> Jane Austen</p>
+          <a href="https://www.amazon.com/Pride-Prejudice-Jane-Austen/dp/1503290565" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+        <div class="book-card">
+          <img src="https://covers.openlibrary.org/b/isbn/9781455582877-L.jpg" alt="The Notebook">
+          <h3>The Notebook</h3>
+          <p><strong>Author:</strong> Nicholas Sparks</p>
+          <a href="https://www.amazon.com/Notebook-Nicholas-Sparks/dp/1455582875" target="_blank" class="buy-button">Buy on Amazon</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop-section">
+        <h2>👻 Eerie Reads</h2>
+        <div class="book-grid">
+          <div class="book-card">
+            <img src="https://covers.openlibrary.org/b/id/8226196-L.jpg" alt="Dracula">
+            <h3>Dracula</h3>
+            <p><strong>Author:</strong> Bram Stoker</p>
+            <a href="https://www.amazon.com/Dracula-Bram-Stoker/dp/1503261387" target="_blank" class="buy-button">Buy on Amazon</a>
+          </div>
+          <div class="book-card">
+            <img src="https://covers.openlibrary.org/b/id/7984916-L.jpg" alt="Coraline">
+            <h3>Coraline</h3>
+            <p><strong>Author:</strong> Neil Gaiman</p>
+            <a href="https://www.amazon.com/Coraline-Neil-Gaiman/dp/0380807343" target="_blank" class="buy-button">Buy on Amazon</a>
+          </div>
+        </div>
+      </section>
+      
+
+  </main>
+
+  <footer>
+    <p>© 2025 Book Mood Selector.</p>
+  </footer>
+</body>
+</html>
