@@ -7,15 +7,37 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1>What's your mood today?</h1>
-    <nav>
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">📚 Book Mood Selector</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Mood Quiz</a>
+        <a href="forum.html">Forum</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container fade-in" style="text-align: center; margin-top: 60px;">
+    <h2 class="fade-in" style="margin-bottom: 30px;">What's your mood today?</h2>
+    <nav class="mood-nav">
       <a href="mood.html?mood=adventurous">Adventurous</a>
       <a href="mood.html?mood=nostalgic">Nostalgic</a>
       <a href="mood.html?mood=romantic">Romantic</a>
       <a href="mood.html?mood=eerie">Eerie</a>
       <a href="surprise.html">Surprise Me!</a>
+      <a href="quiz.html" class="start-quiz-button">Take the Mood Quiz</a>
     </nav>
-  </div>
+
+    <img src="mood-banner.jpg" 
+    alt="Mood Inspiration Banner" 
+    style="margin-top: 40px; max-width: 100%; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+
+  </main>
+
+  <footer>
+    <p>© 2025 Book Mood Selector.</p>
+  </footer>
 </body>
 </html>
