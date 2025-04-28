@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum - Book Mood Selector</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <h1 class="logo">📚 Book Mood Selector</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="quiz.html">Mood Quiz</a>
+        <a href="forum.html">Forum</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container about-section">
+    <h2>💬 Book Mood Forum</h2>
+    <p>Share your thoughts, moods, or book suggestions!</p>
+    
+    <form id="forum-form">
+      <input type="text" id="name" placeholder="Your name" required style="width: 90%; padding: 10px; margin-bottom: 10px;"><br>
+      <input type="text" id="mood" placeholder="Your mood" required style="width: 90%; padding: 10px; margin-bottom: 10px;"><br>
+      <textarea id="comment" placeholder="What’s on your mind?" rows="4" required style="width: 90%; padding: 10px;"></textarea><br>
+      <button type="submit" style="margin-top: 10px; padding: 10px 20px;">Post</button>
+    </form>
+
+    <div id="forum-posts" style="margin-top: 40px; text-align: left;"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Book Mood Selector.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('forum-form');
+    const postsDiv = document.getElementById('forum-posts');
+
+    function renderPosts() {
+  postsDiv.innerHTML = "";
+  const posts = JSON.parse(localStorage.getItem("forumPosts") || "[]");
+  posts.reverse().forEach((post, index) => {
+    const div = document.createElement("div");
+    div.style.position = "relative";
+    div.style.border = "1px solid #ddd";
+    div.style.borderRadius = "12px";
+    div.style.padding = "20px";
+    div.style.marginBottom = "15px";
+    div.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.05)";
+    div.style.backgroundColor = "#fff";
+
+    div.innerHTML = `
+      <button onclick="deletePost(${posts.length - 1 - index})"
+        style="position: absolute; top: 10px; right: 10px; background: #e74c3c; color: white; border: none; border-radius: 50%; width: 30px; height: 30px; font-weight: bold; cursor: pointer;">
+        &times;
+      </button>
+      <strong>${post.name}</strong> (<em>${post.mood}</em>)<br>
+      <p>${post.comment}</p>
+    `;
+    postsDiv.appendChild(div);
+  });
+}
+
+
+    function deletePost(index) {
+      let posts = JSON.parse(localStorage.getItem("forumPosts") || "[]");
+      posts.splice(index, 1);
+      localStorage.setItem("forumPosts", JSON.stringify(posts));
+      renderPosts();
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const mood = document.getElementById("mood").value.trim();
+      const comment = document.getElementById("comment").value.trim();
+      if (!name || !mood || !comment) return;
+
+      const post = { name, mood, comment };
+      const posts = JSON.parse(localStorage.getItem("forumPosts") || "[]");
+      posts.push(post);
+      localStorage.setItem("forumPosts", JSON.stringify(posts));
+      form.reset();
+      renderPosts();
+    });
+
+    window.onload = renderPosts;
+  </script>
+</body>
+</html>
