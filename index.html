@@ -17,10 +17,10 @@
         <a href="about.html">About</a>
         <a href="shop.html">Shop</a>
         <div class="user-info" id="user-info"></div>
-      </nav>      
+      </nav>
     </div>
   </header>
-  
+
   <main class="container fade-in" style="text-align: center; margin-top: 60px;">
     <h2 class="fade-in" style="margin-bottom: 30px;">What's your mood today?</h2>
     <nav class="mood-nav">
@@ -41,15 +41,21 @@
     <p>© 2025 Book Mood Selector.</p>
   </footer>
 
-  <!-- ✅ JavaScript now properly placed at bottom of body -->
+  <!-- ✅ User login/logout logic -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const user = localStorage.getItem("currentUser");
+      const infoDiv = document.getElementById("user-info");
+
       if (user) {
-        const infoDiv = document.getElementById("user-info");
         infoDiv.innerHTML = `
           <span>Welcome, <strong>${user}</strong></span>
           <button onclick="logout()">Logout</button>
+        `;
+      } else {
+        infoDiv.innerHTML = `
+          <a href="login.html" style="color:white; text-decoration:underline;">Login</a>
+          <a href="signup.html" style="color:white; text-decoration:underline;">Sign Up</a>
         `;
       }
     });
