@@ -42,29 +42,30 @@
   </footer>
 
   <!-- ✅ User login/logout logic -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const user = localStorage.getItem("currentUser");
-      const infoDiv = document.getElementById("user-info");
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const user = localStorage.getItem("currentUser");
+    const infoDiv = document.getElementById("user-info");
 
-      if (user) {
-        infoDiv.innerHTML = `
-          <span>Welcome, <strong>${user}</strong></span>
-          <button onclick="logout()">Logout</button>
-        `;
-      } else {
-        infoDiv.innerHTML = `
-          <a href="login.html" style="color:white; text-decoration:underline;">Login</a>
-          <a href="signup.html" style="color:white; text-decoration:underline;">Sign Up</a>
-        `;
-      }
-    });
-
-    function logout() {
-      localStorage.removeItem("currentUser");
-      window.location.href = "login.html";
+    // ✅ If not logged in, redirect to signup.html
+    if (!user) {
+      window.location.href = "signup.html";
+      return;
     }
-  </script>
+
+    // ✅ If logged in, show welcome + logout
+    infoDiv.innerHTML = `
+      <span>Welcome, <strong>${user}</strong></span>
+      <button onclick="logout()">Logout</button>
+    `;
+  });
+
+  function logout() {
+    localStorage.removeItem("currentUser");
+    window.location.href = "login.html";
+  }
+</script>
+
 </body>
 </html>
 
