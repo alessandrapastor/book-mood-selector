@@ -1,0 +1,44 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    .form-container { max-width: 400px; margin: 100px auto; text-align: center; }
+    input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+    button { background-color: #6c5ce7; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
+    button:hover { background-color: #5946d2; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Create Account</h2>
+    <input type="text" id="signup-username" placeholder="Username" required><br>
+    <input type="password" id="signup-password" placeholder="Password" required><br>
+    <button onclick="signUp()">Sign Up</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+  <script>
+    function signUp() {
+      const username = document.getElementById("signup-username").value.trim();
+      const password = document.getElementById("signup-password").value.trim();
+      if (username && password) {
+        const users = JSON.parse(localStorage.getItem("users") || "{}");
+        if (users[username]) {
+          alert("Username already exists");
+          return;
+        }
+        users[username] = password;
+        localStorage.setItem("users", JSON.stringify(users));
+        alert("Account created! Redirecting to login...");
+        window.location.href = "login.html";
+      } else {
+        alert("Please enter a username and password.");
+      }
+    }
+  </script>
+</body>
+</html>
