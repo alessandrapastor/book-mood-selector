@@ -1,16 +1,64 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login</title>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .form-container { max-width: 400px; margin: 100px auto; text-align: center; }
-    input { width: 90%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
-    button { background-color: #6c5ce7; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
-    button:hover { background-color: #5946d2; }
+    .form-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #5946d2;
+      transform: translateY(-1px);
+    }
+
+    a {
+      color: #6c5ce7;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
@@ -21,12 +69,15 @@
     <button onclick="logIn()">Log In</button>
     <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
   </div>
+
   <script>
     function logIn() {
       const username = document.getElementById("login-username").value.trim();
       const password = document.getElementById("login-password").value.trim();
-      const users = JSON.parse(localStorage.getItem("users") || "{}");
-      if (users[username] && users[username] === password) {
+      const users = JSON.parse(localStorage.getItem("users") || "[]");
+
+      const foundUser = users.find(u => u.username === username && u.password === password);
+      if (foundUser) {
         localStorage.setItem("currentUser", username);
         alert("Login successful! Redirecting to home...");
         window.location.href = "index.html";
@@ -37,3 +88,4 @@
   </script>
 </body>
 </html>
+
